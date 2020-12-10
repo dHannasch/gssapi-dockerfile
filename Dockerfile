@@ -1,4 +1,4 @@
-FROM python:alpine
+FROM alpine:edge
 
 RUN apk add --no-cache py-cryptography \
     && pip install --no-cache-dir wheel \
