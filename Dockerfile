@@ -5,9 +5,10 @@ RUN apk add --no-cache python3-dev py-pip git \
     && apk add --no-cache --virtual .compile-deps gcc musl-dev \
     && pip install --no-cache-dir cython \
     && apk add --no-cache --virtual .build-deps gcc musl-dev krb5-dev \
-    # need gcc for gssapi
-    # gcc -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -fomit-frame-pointer -g -fno-semantic-interposition -fomit-frame-pointer -g -fno-semantic-interposition -fomit-frame-pointer -g -fno-semantic-interposition -DTHREAD_STACK_SIZE=0x100000 -fPIC -I/usr/include/python3.8 -c gssapi/raw/misc.c -o build/temp.linux-x86_64-3.8/gssapi/raw/misc.o -DHAS_GSSAPI_EXT_H
-    && pip install --no-cache-dir gssapi \
+    && git clone https://github.com/pythongssapi/python-gssapi.git \
+    && cd python-gssapi \
+    && python3 setup.py build \
+    && python3 setup.py install \
     && apk del --no-cache .compile-deps .build-deps
     # makes no difference whether krb5 itself is installed or not
 
