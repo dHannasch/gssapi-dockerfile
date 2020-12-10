@@ -1,6 +1,6 @@
 FROM alpine:edge
 
-RUN apk add --no-cache py-cryptography \
+RUN apk add --no-cache py-pip \
     && pip install --no-cache-dir wheel \
     && apk add --no-cache --virtual .build-deps gcc musl-dev krb5-dev \
     # need gcc for gssapi
