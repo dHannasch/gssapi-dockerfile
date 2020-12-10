@@ -9,6 +9,7 @@ RUN apk add --no-cache python3-dev py-pip git \
     && cd python-gssapi \
     && python3 setup.py build \
     && python3 setup.py install \
-    && apk del --no-cache .compile-deps .build-deps
+    && apk del --no-cache .compile-deps
+    # && apk del --no-cache .build-deps
     # makes no difference whether krb5 itself is installed or not
 
